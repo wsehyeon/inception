@@ -1,6 +1,8 @@
 .PHONY:	 all fclean
 
 all:
+		@sudo mkdir -p /home/swang/data/wordpress
+		@sudo mkdir -p /home/swang/data/database
 		@sudo docker-compose -f srcs/docker-compose.yml up --build -d
 
 fclean:	
