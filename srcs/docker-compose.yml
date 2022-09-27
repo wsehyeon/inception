@@ -1,63 +1,65 @@
 version: "3.8"
 
 services:
-	mariadb:
-		build: ./mariadb
-		container_name: mariadb
-		expose:
-			- 3306
-		networks:
-			- inception_net
-		env_file:
-			- .env
-		volumes:
-			- DB_vol:/var/lib/mysql
+  mariadb:
+    build: ./requirements/mariadb
+    container_name: mariadb
+    expose:
+      - 3306
+    networks:
+      - inception_net
+    env_file:
+      - .env
+    volumes:
+      - DB_vol:/var/lib/mysql
     restart: always
 
 
-	wordpress:
-		build: ./wordpress
-		container_name: wordpress
-		expose:
-			-3306
-			-9000
-		networks:
-			- inception_net
-		env_file:
-			- .env
-		volumes:
-			- wordpress_vol:/var/www/html
+  wordpress:
+    build: ./requirements/wordpress
+    container_name: wordpress
+    expose:
+      - 3306
+      - 9000
+    networks:
+      - inception_net
+    env_file:
+      - .env
+    volumes:
+      - wordpress_vol:/var/www/html
     depends_on:
       - mariadb
     restart: always
 
-	nginx:
-		build: ./nginx
-		container_name: nginx
-		expose:
-			- 9000
-		ports:
-			- 443:443
-		networks:
-			- inception_net
-		env_file:
-			- .env
-		volumes:
-			- wordpress_vol:/var/www/html
+  nginx:
+    build: ./requirements/nginx
+    container_name: nginx
+    expose:
+      - 9000
+    ports:
+      - 443:443
+    networks:
+      - inception_net
+    env_file:
+      - .env
+    volumes:
+      - wordpress_vol:/var/www/html
     depends_on:
       - wordpress
     restart: always
 
 networks:
-	incpetion_net:
-		driver: bridge
+  inception_net:
+    driver: bridge
 
 volumes:
-	DB_vol:
-		driver_opts:
-			device: /home/swang/data/db
-			o: bind
-	wordpress_vol:
-		driver_opts:
-			device: /home/swang/data/wordpress
-			o: bind
+  DB_vol:
+    driver_opts:
+      device: /home/swang/data/database
+      o: bind
+      type: bind
+  wordpress_vol:
+    driver_opts:
+      device: /home/swang/data/wordpress
+      o: bind
+      type: bind

@@ -7,7 +7,8 @@ all:
 
 fclean:	
 		@sudo docker-compose -f srcs/docker-compose.yml down
-		@docker system prune -af --volumes
+		@docker system prune -af
+		@docker volume rm $$(docker volume ls -q)
 		@sudo rm -rf /home/swang/data
 
 re: fclean all
