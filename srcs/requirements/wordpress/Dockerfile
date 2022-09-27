@@ -23,5 +23,4 @@ COPY ./tools/wp-script.sh /wp-script.sh
 
 RUN mkdir -p /run/php
 
-# foreground
 ENTRYPOINT ["sh", "/wp-script.sh"]

@@ -1,4 +1,3 @@
-# 기존에 작성했었던 부분
 FROM debian:buster
 
 RUN apt-get update -y && apt-get upgrade -y
