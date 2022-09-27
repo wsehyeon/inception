@@ -1,4 +1,7 @@
-.PHONY:	 all fclean
+.PHONY:	init all fclean
+
+init:
+		@sudo ./srcs/requirements/tools/init.sh
 
 all:
 		@sudo mkdir -p /home/swang/data/wordpress
