@@ -3,6 +3,8 @@ then
 	mkdir -p /var/www/wordpress
 	wp core download --allow-root --version=6.0.2 --path='/var/www/wordpress'
 	chown -R www-data:www-data /var/www/wordpress
+	
+	sleep 5
 
 	wp config create --allow-root --dbname=$WP_DB_NAME \
 								--dbuser=$WP_DB_ADMIN_USER \
