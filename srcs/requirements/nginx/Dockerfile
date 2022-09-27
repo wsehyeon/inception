@@ -20,6 +20,7 @@ RUN openssl req -x509 -days 365 -in server.csr -key server.key -out server.crt
 # ssl 폴더로 파일들 옮겨주기
 RUN mv server.crt /etc/ssl/certs/
 RUN mv server.key /etc/ssl/private/
+RUN chmod 777 /etc/ssl/certs/server.crt /etc/ssl/private/server.key 
 
 #------nginx config file-----#
 # 미리 작성해둔 default 파일을 컨테이너의 원래 default 파일이 있던 곳으로 옮겨준다

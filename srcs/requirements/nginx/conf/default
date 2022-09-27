@@ -4,9 +4,8 @@ server {
 
 	server_name swang.42.fr;
 		
-
 	# 페이지를 불러올 위치
-	root /var/www/wordpress;
+	root /var/www/html;
 	index index.php;
 
 	ssl on;

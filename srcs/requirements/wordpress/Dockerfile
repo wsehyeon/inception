@@ -5,9 +5,10 @@ RUN apt-get -y upgrade
 
 # debian:buster not support php7.4
 # php7.4 ~> debian:bullseye
+RUN apt-get -y install mariadb-client
 RUN apt-get -y install php7.3
 RUN apt-get -y install php-fpm
-RUN apt-get -y install php-mysql
+RUN apt-get -y install php-mysqli
 
 # https://make.wordpress.org/cli/handbook/guides/installing/#installing-on-windows 
 # -O option :    resource name : last URL word
@@ -17,6 +18,7 @@ RUN chmod +x wp-cli.phar
 RUN mv wp-cli.phar /usr/local/bin/wp
 
 COPY ./conf/www.conf /etc/php/7.3/pool.d/www.conf
+COPY ./conf/wp-config.php /var/www/html/wp-config.php
 COPY ./tools/wp-script.sh /wp-script.sh
 
 RUN mkdir -p /run/php
