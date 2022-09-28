@@ -6,7 +6,7 @@ RUN apt-get -y upgrade
 # debian:buster not support php7.4
 # php7.4 ~> debian:bullseye
 RUN apt-get -y install php7.3
-RUN apt-get -y install php-mysqli
+RUN apt-get -y install php-mysql
 RUN apt-get -y install php-fpm
 RUN apt-get -y install mariadb-client
 

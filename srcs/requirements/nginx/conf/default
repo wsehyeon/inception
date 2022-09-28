@@ -13,6 +13,10 @@ server {
 	ssl_certificate /etc/ssl/certs/server.crt; # 인증서 파일
 	ssl_certificate_key /etc/ssl/private/server.key; # 인증키 파일
 
+	location / {
+		try_files $uri $uri/ =404;
+	}
+	
 	# php
 	location ~ \.php$ {
 		fastcgi_pass wordpress:9000;
