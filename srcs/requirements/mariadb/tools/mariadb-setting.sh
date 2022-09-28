@@ -17,5 +17,5 @@ then
 	mysqladmin -u$MYSQL_ROOT -p$MYSQL_ROOT_PASS shutdown
 fi
 
-exec mysqld_safe
+exec mysqld
 
