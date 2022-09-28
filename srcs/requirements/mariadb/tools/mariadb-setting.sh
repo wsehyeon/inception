@@ -8,9 +8,9 @@ then
 
 	mysql -e "CREATE USER IF NOT EXISTS '$WP_ADMIN_USER'@'%' IDENTIFIED BY '$WP_ADMIN_PASS';"
 
-	mysql $DB_NAME -u root < /wp_backup.sql
-
 	mysql -e "GRANT ALL ON $DB_NAME.* TO '$WP_ADMIN_USER'@'%';"
+	
+	mysql $DB_NAME -u root < /wp_backup.sql
 
 	mysql -e "ALTER USER '$MYSQL_ROOT'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASS';"
 
