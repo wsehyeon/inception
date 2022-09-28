@@ -9,8 +9,8 @@ mysql -e "CREATE USER IF NOT EXISTS '$WP_ADMIN_USER'@'%' IDENTIFIED BY '$WP_ADMI
 # wordpress 데이터베이스 관리용 유저에게 권한 부여
 mysql -e "GRANT ALL PRIVILEGES ON $DB_NAME.* TO '$WP_ADMIN_USER'@'%'";
 
-# wordpress 데이터 베이스에 워드프레스 백업파일 추기
-mysql $DB_NAME -u root < ./wp_backup.sql
+# wordpress 데이터 베이스에 워드프레스 blog 백업파일 추기
+mysql $DB_NAME -u root < ./blog_backup.sql
 
 # mysql에 권한 설정
 mysql -e "ALTER USER '$MYSQL_ROOT'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASS';"
